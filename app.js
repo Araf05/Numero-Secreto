@@ -27,5 +27,9 @@ console.log(numeroUsuario);
 if(numeroUsuario == numeroSecreto){
     alert(`Adivinaste! el número secreto es: ${numeroUsuario}`);
 } else {
-    alert('No acertaste el número');
+    if(numeroUsuario > numeroSecreto){
+        alert(`El numero secreto es menor que ${numeroUsuario}`);
+    } else {
+        alert(`El numero secreto es mayor que ${numeroUsuario}`);
+    }
 }
