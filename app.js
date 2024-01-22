@@ -21,15 +21,20 @@ if (eleccion == numeroSecreto) {
 */
 alert("¡Bienvenida y bievenido a nuestro sitio web!");
 let numeroSecreto = 6;
-let numeroUsuario = prompt('Elige un número entre 1 y 10: ');
-console.log(numeroUsuario);
+let numeroUsuario = 0;
 
-if(numeroUsuario == numeroSecreto){
-    alert(`Adivinaste! el número secreto es: ${numeroUsuario}`);
-} else {
-    if(numeroUsuario > numeroSecreto){
-        alert(`El numero secreto es menor que ${numeroUsuario}`);
+while(numeroUsuario != numeroSecreto)
+{
+    numeroUsuario = prompt('Elige un número entre 1 y 10: ');
+    console.log(numeroUsuario);
+
+    if(numeroUsuario == numeroSecreto){
+        alert(`Adivinaste! el número secreto es: ${numeroUsuario}`);
     } else {
-        alert(`El numero secreto es mayor que ${numeroUsuario}`);
+        if(numeroUsuario > numeroSecreto){
+            alert(`El numero secreto es menor que ${numeroUsuario}`);
+        } else {
+            alert(`El numero secreto es mayor que ${numeroUsuario}`);
+        }
     }
 }
