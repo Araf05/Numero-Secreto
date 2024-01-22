@@ -1,12 +1,13 @@
 alert("¡Bienvenida y bievenido a nuestro sitio web!");
-let numeroSecreto = 6;
+let numeroMaxPosible = 100;
+let numeroSecreto = Math.floor(Math.random()*numeroMaxPosible)+1;
 let numeroUsuario = 0;
 let intentos = 1;
-let maxIntentos = 3;
+let maxIntentos = 6;
 
 while(numeroUsuario != numeroSecreto)
 {
-    numeroUsuario = prompt('Elige un número entre 1 y 10: ');
+    numeroUsuario = parseInt(prompt(`Elige un número entre 1 y ${numeroMaxPosible}: `));
     console.log(numeroUsuario)
 
     if(numeroUsuario == numeroSecreto){
