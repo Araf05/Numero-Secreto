@@ -25,5 +25,7 @@ let numeroUsuario = prompt('Elige un número entre 1 y 10: ');
 console.log(numeroUsuario);
 
 if(numeroUsuario == numeroSecreto){
-    alert('Adivinaste el número secreto!')
+    alert(`Adivinaste! el número secreto es: ${numeroUsuario}`);
+} else {
+    alert('No acertaste el número');
 }
