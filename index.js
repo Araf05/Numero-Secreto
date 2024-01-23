@@ -1,6 +1,7 @@
 let numeroMaxPosible = 100;
 let numeroSecreto = 0;
 let intentos = 0;
+let maxIntentos = 6;
 let listaNumerosSorteados = [];
 
 function asignarTextoElemento(elemento, texto){
@@ -14,6 +15,7 @@ function verificarIntento(){
     if(numeroDeUsuario === numeroSecreto){
         asignarTextoElemento('p', `Adivinaste! el número secreto es ${numeroSecreto}. En ${intentos} ${(intentos === 1) ? 'intento' : 'intentos'}`);
         document.getElementById('reiniciar').removeAttribute('disabled');
+        document.getElementById('intentar').setAttribute('disabled', 'true');
     } else {
         if(numeroDeUsuario > numeroSecreto){
            asignarTextoElemento('p', `El número secreto es menor que ${numeroDeUsuario}`); 
@@ -21,7 +23,14 @@ function verificarIntento(){
             asignarTextoElemento('p', `El número secreto es mayor que ${numeroDeUsuario}`); 
         }
         intentos++;
+        asignarTextoElemento('#cantidad__Intentos', `Intento ${intentos} de ${maxIntentos}`);
         limpiarCampo();
+    }
+    if(intentos > maxIntentos){
+        asignarTextoElemento('p', `No te quedan más intentos. El número secreto era ${numeroSecreto}`); 
+        asignarTextoElemento('#cantidad__Intentos', '');
+        document.getElementById('reiniciar').removeAttribute('disabled');
+        document.getElementById('intentar').setAttribute('disabled', 'true');
     }
     return;
 }
@@ -42,6 +51,7 @@ function reiniciarJuego(params) {
     condicionesIniciales();
     //desabilitar el botón de nuevo juego
     document.querySelector('#reiniciar').setAttribute('disabled', 'true');
+    document.getElementById('intentar').removeAttribute('disabled');
 }
 
 function limpiarCampo(){
@@ -50,9 +60,6 @@ function limpiarCampo(){
 
 function generarNumeroSecreto(maximoPosible) {
     let numeroGenerado = Math.floor(Math.random()*maximoPosible)+1;
-
-    console.log('numero' + numeroGenerado);
-    console.log(listaNumerosSorteados);
     
     if(listaNumerosSorteados.length === numeroMaxPosible){
         asignarTextoElemento('p', 'Ya se sortearon todos los números posibles');
