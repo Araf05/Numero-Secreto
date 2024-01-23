@@ -9,9 +9,15 @@ function asignarTextoElemento(elemento, texto){
 
 function verificarIntento(){
     let numeroDeUsuario = parseInt(document.getElementById('valorDeUsuario').value);
-    console.log(numeroDeUsuario);
-    console.log(typeof(numeroDeUsuario));
-    console.log(numeroSecreto === numeroDeUsuario);
+    if(numeroDeUsuario === numeroSecreto){
+        asignarTextoElemento('p', `Adivinaste! el número secreto es ${numeroSecreto}`);
+    } else {
+        if(numeroDeUsuario > numeroSecreto){
+           asignarTextoElemento('p', `El número secreto es menor que ${numeroDeUsuario}`); 
+        } else {
+            asignarTextoElemento('p', `El número secreto es mayor que ${numeroDeUsuario}`); 
+        }
+    }
     return;
 }
 
